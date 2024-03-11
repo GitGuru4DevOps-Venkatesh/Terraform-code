@@ -1,4 +1,4 @@
-# If you don't have a VPC and subnets set up in your AWS account. User or Company can use this Terraform Code.
+# If you don't have a VPC and subnets set up in your AWS account. User or Company can use this Modified-Terraform Code.
 
 ## Below is the modified Terraform code that includes the VPC, subnet, and route table setup along with the existing resources:
 
