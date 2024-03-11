@@ -1,5 +1,6 @@
 # Terraform-code
 To make the Terraform code more reusable, we can parameterize the resource creation and provide flexibility for users to customize the setup according to their needs. Here's the modified version of the code
+```
 # Define AWS provider
 provider "aws" {
   region = "us-east-1"
@@ -130,7 +131,7 @@ output "jira_db_endpoint" {
 output "eks_cluster_endpoint" {
   value = aws_eks_cluster.my_cluster.endpoint
 }
-
+```
 In this modified code:
 
 I've introduced variables for the SSH key pair name, AMI ID, instance type, subnet ID, and RDS database password. Users can customize these values when deploying the infrastructure.
