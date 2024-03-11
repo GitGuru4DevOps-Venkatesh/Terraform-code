@@ -1,6 +1,5 @@
 # Terraform-code
 To make the Terraform code more reusable, we can parameterize the resource creation and provide flexibility for users to customize the setup according to their needs. Here's the modified version of the code
-
 # Define AWS provider
 provider "aws" {
   region = "us-east-1"
@@ -114,6 +113,14 @@ output "prometheus_ip" {
 
 output "grafana_ip" {
   value = aws_instance.grafana.private_ip
+}
+
+output "jira_db_endpoint" {
+  value = aws_db_instance.jira_db.endpoint
+}
+
+output "eks_cluster_endpoint" {
+  value = aws_eks_cluster.my_cluster.endpoint
 }
 
 output "jira_db_endpoint" {
