@@ -1,11 +1,13 @@
+# Steps a user or company would follow to use the Terraform code effectively:
+
 ## Step 1: Review Requirements
 Before starting, review the requirements for your web application and DevOps environment. Identify the necessary tools and infrastructure components for development, testing, and deployment.
 
 ## Step 2: Set Up AWS Account
-Ensure you have an AWS account with the necessary permissions to create and manage resources. Sign up at AWS if you don't have an account.
+Ensure you have an AWS account with the necessary permissions to create and manage resources. Sign up at AWS https://aws.amazon.com/ if you don't have an account.
 
 ## Step 3: Install Terraform
-Install Terraform on your local machine from the official website. Follow the installation guide for your operating system.
+Install Terraform on your local machine from the official website https://www.terraform.io/downloads.html. Follow the installation guide for your operating system.
 
 ## Step 4: Prepare SSH Key Pair
 Create an SSH key pair for EC2 instance access. Use the `ssh-keygen` command or specify an existing key in the Terraform variables.
