@@ -1,6 +1,10 @@
-### Here are the steps a user or company would follow to use the Terraform code effectively: ###
+### 
+Here are the steps a user or company would follow to use the Terraform code effectively: 
+###
 
-**1. Review Requirements: Before getting started, review the requirements for your web application and DevOps environment. Identify the tools and infrastructure components needed to support your development, testing, and deployment processes.**
+**
+1. Review Requirements: Before getting started, review the requirements for your web application and DevOps environment. Identify the tools and infrastructure components needed to support your development, testing, and deployment processes.
+**
 
 2. Set Up AWS Account: Ensure that you have access to an AWS account and the necessary permissions to create and manage resources. If you don't have an AWS account, sign up for one at https://aws.amazon.com/.
 
