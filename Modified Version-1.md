@@ -218,8 +218,9 @@ output "public_subnet_id" {
 }
 ```
 
-##This is the line-by-line explanation of the Terraform code:
-
+--
+This is the line-by-line explanation of the Terraform code:
+--
 1. **Provider Definition:**
    - Defines the AWS provider with the specified region as `us-east-1`.
 
