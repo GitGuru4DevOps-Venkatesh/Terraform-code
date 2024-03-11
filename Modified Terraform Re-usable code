@@ -1,27 +1,40 @@
-#Here are the steps a user or company would follow to use the Terraform code effectively:#
+# Here are the steps a user or company would follow to use the Terraform code effectively:
 
-*1. Review Requirements: Before getting started, review the requirements for your web application and DevOps environment. Identify the tools and infrastructure components needed to support your development, testing, and deployment processes.*
+## 1. Review Requirements: 
+** Before getting started, review the requirements for your web application and DevOps environment. Identify the tools and infrastructure components needed to support your development, testing, and deployment processes.
 
-2. Set Up AWS Account: Ensure that you have access to an AWS account and the necessary permissions to create and manage resources. If you don't have an AWS account, sign up for one at https://aws.amazon.com/.
+## 2. Set Up AWS Account: 
+** Ensure that you have access to an AWS account and the necessary permissions to create and manage resources. If you don't have an AWS account, sign up for one at https://aws.amazon.com/.
 
-3. Install Terraform: If you haven't already, install Terraform on your local machine. You can download Terraform from the official website: https://www.terraform.io/downloads.html. Follow the installation instructions for your operating system.
+## 3. Install Terraform: 
+** If you haven't already, install Terraform on your local machine. You can download Terraform from the official website: https://www.terraform.io/downloads.html. Follow the installation instructions for your operating system.
 
-4. Prepare SSH Key Pair: Create an SSH key pair to use for accessing the EC2 instances provisioned by Terraform. If you already have an SSH key pair, make sure to specify its name in the Terraform variables. If not, generate a new SSH key pair using the `ssh-keygen` command.
+## 4. Prepare SSH Key Pair: 
+**Create an SSH key pair to use for accessing the EC2 instances provisioned by Terraform. If you already have an SSH key pair, make sure to specify its name in the Terraform variables. If not, generate a new SSH key pair using the `ssh-keygen` command.
 
-5. Customize Variables: Open the Terraform configuration file (`main.tf`) in a text editor and customize the variables according to your requirements. Update the default values for variables such as `ssh_key_name`, `ami_id`, `instance_type`, `subnet_id`, and `db_password` to match your environment.
+## 5. Customize Variables: 
+** Open the Terraform configuration file (`main.tf`) in a text editor and customize the variables according to your requirements. Update the default values for variables such as `ssh_key_name`, `ami_id`, `instance_type`, `subnet_id`, and `db_password` to match your environment.
 
-6. Review Resource Definitions: Review the resource definitions in the Terraform configuration file to ensure that they align with your desired infrastructure setup. Make any necessary modifications or additions based on your requirements.
+## 6. Review Resource Definitions: 
+** Review the resource definitions in the Terraform configuration file to ensure that they align with your desired infrastructure setup. Make any necessary modifications or additions based on your requirements.
 
-7. Initialize Terraform: Open a terminal or command prompt, navigate to the directory containing your Terraform configuration file, and run the `terraform init` command. This will initialize the Terraform working directory and download any required plugins.
+## 7. Initialize Terraform: 
+** Open a terminal or command prompt, navigate to the directory containing your Terraform configuration file, and run the `terraform init` command. This will initialize the Terraform working directory and download any required plugins.
 
-8. **Plan Infrastructure**: Run the `terraform plan` command to create an execution plan. Terraform will analyze the configuration and display the actions it will take to create, update, or delete resources. Review the plan to ensure it matches your expectations.
+## 8. Plan Infrastructure: 
+** Run the `terraform plan` command to create an execution plan. Terraform will analyze the configuration and display the actions it will take to create, update, or delete resources. Review the plan to ensure it matches your expectations.
 
-9. Apply Configuration: Once you are satisfied with the plan, apply the Terraform configuration by running the `terraform apply` command. Terraform will prompt you to confirm the planned actions. Enter `yes` to proceed with the deployment.
+## 9. Apply Configuration: 
+** Once you are satisfied with the plan, apply the Terraform configuration by running the `terraform apply` command. Terraform will prompt you to confirm the planned actions. Enter `yes` to proceed with the deployment.
 
-10. Monitor Deployment: Monitor the Terraform deployment process as it creates and configures the AWS resources. Terraform will provide status updates and display any errors or warnings encountered during the deployment.
+## 10. Monitor Deployment: 
+** Monitor the Terraform deployment process as it creates and configures the AWS resources. Terraform will provide status updates and display any errors or warnings encountered during the deployment.
 
-11. Access Provisioned Resources: Once the deployment is complete, you can access the provisioned resources such as Jenkins, SonarQube, Prometheus, Grafana, RDS database, and EKS cluster using their respective endpoints or IP addresses.
+## 11. Access Provisioned Resources: 
+** Once the deployment is complete, you can access the provisioned resources such as Jenkins, SonarQube, Prometheus, Grafana, RDS database, and EKS cluster using their respective endpoints or IP addresses.
 
-12. Verify Configuration: Verify that the provisioned infrastructure meets your requirements and is functioning correctly. Test the deployment pipeline, monitor application performance, and ensure that all components are properly configured.
+## 12. Verify Configuration: 
+** Verify that the provisioned infrastructure meets your requirements and is functioning correctly. Test the deployment pipeline, monitor application performance, and ensure that all components are properly configured.
 
-By following these steps, users or companies can effectively use the provided Terraform code to set up a basic DevOps environment on AWS for their web applications. They can customize the configuration to fit their specific needs and leverage the automation capabilities of Terraform to streamline the infrastructure provisioning process.
+***By following these steps, users or companies can effectively use the provided Terraform code to set up a basic DevOps environment on AWS for their web applications. 
+** Then only, can customize the configuration to fit their specific needs and leverage the automation capabilities of Terraform to streamline the infrastructure provisioning process.
