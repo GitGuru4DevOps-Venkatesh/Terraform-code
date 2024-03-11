@@ -1,4 +1,6 @@
 # Terraform-code
+# If you have already a VPC and subnets set up in your AWS account. Then only, User or Company can use this Terraform Code.
+
 **To make the Terraform code more reusable, we can parameterize the resource creation and provide flexibility for users to customize the setup according to their needs. Here's the modified version of the code**
 ```
 # Define AWS provider
@@ -134,7 +136,10 @@ output "eks_cluster_endpoint" {
 ```
 In this modified code:
 
-I've introduced variables for the SSH key pair name, AMI ID, instance type, subnet ID, and RDS database password. Users can customize these values when deploying the infrastructure.
+---
+**I've introduced variables for the SSH key pair name, AMI ID, instance type, subnet ID, and RDS database password. Users can customize these values when deploying the infrastructure.
 The resource definitions now use these variables, making the code more reusable and adaptable to different environments.
-Users can provide their own values for these variables according to their specific requirements when deploying the Terraform configuration.
+--
+**Users can provide their own values for these variables according to their specific requirements when deploying the Terraform configuration.
 This version of the code allows for greater flexibility and reusability, as it can be easily customized for different scenarios without needing to modify the resource definitions directly.
+---
