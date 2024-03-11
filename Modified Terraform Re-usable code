@@ -1,122 +1,27 @@
-# Define AWS provider
-provider "aws" {
-  region = "us-east-1"
-}
+here are the steps a user or company would follow to use the Terraform code effectively:
 
-# Variables
-variable "ssh_key_name" {
-  description = "Name of the SSH key pair"
-  default     = "your_ssh_key_name"
-}
+Review Requirements: Before getting started, review the requirements for your web application and DevOps environment. Identify the tools and infrastructure components needed to support your development, testing, and deployment processes.
 
-variable "ami_id" {
-  description = "AMI ID for EC2 instances"
-  default     = "ami-12345678" # Enter the appropriate AMI ID
-}
+Set Up AWS Account: Ensure that you have access to an AWS account and the necessary permissions to create and manage resources. If you don't have an AWS account, sign up for one at https://aws.amazon.com/.
 
-variable "instance_type" {
-  description = "Instance type for EC2 instances"
-  default     = "t2.micro"
-}
+Install Terraform: If you haven't already, install Terraform on your local machine. You can download Terraform from the official website: https://www.terraform.io/downloads.html. Follow the installation instructions for your operating system.
 
-variable "subnet_id" {
-  description = "Subnet ID for EC2 instances"
-  default     = "subnet-12345678" # Enter the appropriate subnet ID
-}
+Prepare SSH Key Pair: Create an SSH key pair to use for accessing the EC2 instances provisioned by Terraform. If you already have an SSH key pair, make sure to specify its name in the Terraform variables. If not, generate a new SSH key pair using the ssh-keygen command.
 
-variable "db_password" {
-  description = "Password for the RDS instance"
-  default     = "password"
-}
+Customize Variables: Open the Terraform configuration file (main.tf) in a text editor and customize the variables according to your requirements. Update the default values for variables such as ssh_key_name, ami_id, instance_type, subnet_id, and db_password to match your environment.
 
-# Jenkins EC2 instance
-resource "aws_instance" "jenkins" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  subnet_id     = var.subnet_id
-  key_name      = var.ssh_key_name
+Review Resource Definitions: Review the resource definitions in the Terraform configuration file to ensure that they align with your desired infrastructure setup. Make any necessary modifications or additions based on your requirements.
 
-  tags = {
-    Name = "Jenkins"
-  }
-}
+Initialize Terraform: Open a terminal or command prompt, navigate to the directory containing your Terraform configuration file, and run the terraform init command. This will initialize the Terraform working directory and download any required plugins.
 
-# SonarQube EC2 instance
-resource "aws_instance" "sonarqube" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  subnet_id     = var.subnet_id
-  key_name      = var.ssh_key_name
+Plan Infrastructure: Run the terraform plan command to create an execution plan. Terraform will analyze the configuration and display the actions it will take to create, update, or delete resources. Review the plan to ensure it matches your expectations.
 
-  tags = {
-    Name = "SonarQube"
-  }
-}
+Apply Configuration: Once you are satisfied with the plan, apply the Terraform configuration by running the terraform apply command. Terraform will prompt you to confirm the planned actions. Enter yes to proceed with the deployment.
 
-# Prometheus EC2 instance
-resource "aws_instance" "prometheus" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  subnet_id     = var.subnet_id
-  key_name      = var.ssh_key_name
+Monitor Deployment: Monitor the Terraform deployment process as it creates and configures the AWS resources. Terraform will provide status updates and display any errors or warnings encountered during the deployment.
 
-  tags = {
-    Name = "Prometheus"
-  }
-}
+Access Provisioned Resources: Once the deployment is complete, you can access the provisioned resources such as Jenkins, SonarQube, Prometheus, Grafana, RDS database, and EKS cluster using their respective endpoints or IP addresses.
 
-# Grafana EC2 instance
-resource "aws_instance" "grafana" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  subnet_id     = var.subnet_id
-  key_name      = var.ssh_key_name
+Verify Configuration: Verify that the provisioned infrastructure meets your requirements and is functioning correctly. Test the deployment pipeline, monitor application performance, and ensure that all components are properly configured.
 
-  tags = {
-    Name = "Grafana"
-  }
-}
-
-# RDS instance for Jira database
-resource "aws_db_instance" "jira_db" {
-  allocated_storage    = 20
-  engine              = "mysql"
-  engine_version      = "5.7"
-  instance_class      = "db.t2.micro"
-  name                = "jira-db"
-  username            = "admin"
-  password            = var.db_password
-  publicly_accessible = false
-}
-
-# EKS cluster
-resource "aws_eks_cluster" "my_cluster" {
-  name     = "my-cluster"
-  role_arn = "arn:aws:iam::123456789012:role/eks-service-role-AWSServiceRoleForAmazonEKS-EXAMPLE"
-  version  = "1.20"
-}
-
-# Outputs
-output "jenkins_ip" {
-  value = aws_instance.jenkins.private_ip
-}
-
-output "sonarqube_ip" {
-  value = aws_instance.sonarqube.private_ip
-}
-
-output "prometheus_ip" {
-  value = aws_instance.prometheus.private_ip
-}
-
-output "grafana_ip" {
-  value = aws_instance.grafana.private_ip
-}
-
-output "jira_db_endpoint" {
-  value = aws_db_instance.jira_db.endpoint
-}
-
-output "eks_cluster_endpoint" {
-  value = aws_eks_cluster.my_cluster.endpoint
-}
+By following these steps, users or companies can effectively use the provided Terraform code to set up a basic DevOps environment on AWS for their web applications. They can customize the configuration to fit their specific needs and leverage the automation capabilities of Terraform to streamline the infrastructure provisioning process.
