@@ -1,4 +1,4 @@
-# Below is the modified version-1 of Terraform code with Kubernetes setup and Docker setup using Ubuntu commands.
+# Below is the modified version-1 of Terraform code with Kubernetes setup and Docker setup.
 ## If Company or Users need to include Docker & Kubernetes Setup instead of using AWS_Cluster_EKS Set-up in the Terraform Code, then only can use this. 
 ### Or else you can use modified terraform code only..!
 
