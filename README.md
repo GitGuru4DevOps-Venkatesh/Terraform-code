@@ -1,5 +1,5 @@
 # Terraform-code
-# If you have already a VPC and subnets set up in your AWS account. Then only, User or Company can use this Terraform Code.
+# If you have already a VPC and subnets set up in your AWS account. Then only, User or Company can use this Terraform Code. If not use modified Terraform code file.
 
 **To make the Terraform code more reusable, we can parameterize the resource creation and provide flexibility for users to customize the setup according to their needs. Here's the modified version of the code**
 ```
