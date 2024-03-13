@@ -243,4 +243,65 @@ output "eks_cluster_endpoint" {
 ### The output blocks are used to display important information such as IP addresses and endpoints after Terraform has applied the configuration. 
 ### Ensure that the values provided for variables like ami_id, subnet_id, and role_arn are appropriate for your AWS environment. 
 ### Additionally, you may want to customize other parameters like instance types, database settings, and security configurations according to your requirements.
+------------------------------------------------------------------------------------------
+## Step-by-step guide on how to use Terraform to provision the infrastructure described in the code provided:
 
+### Step 1: Install Terraform
+If you haven't already, you need to install Terraform on your local machine. You can download Terraform from the [official website](https://www.terraform.io/downloads.html) and follow the installation instructions for your operating system.
+
+### Step 2: Set Up AWS Credentials
+Ensure that you have AWS credentials configured on your machine. You can set up credentials using the AWS CLI or by setting environment variables (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`).
+
+### Step 3: Create a Terraform Configuration File
+Create a file with a `.tf` extension (e.g., `main.tf`) and paste the Terraform configuration provided in your question into this file.
+
+### Step 4: Customize Variables
+Review the variables declared in the configuration file (`variables.tf`) and customize them according to your requirements. For example, you may need to specify your SSH key name, appropriate AMI IDs, subnet IDs, etc.
+
+### Step 5: Initialize Terraform
+Open a terminal or command prompt, navigate to the directory where your Terraform configuration file is located, and run the following command to initialize Terraform:
+
+```
+terraform init
+```
+
+This command initializes Terraform and downloads any necessary plugins.
+
+### Step 6: Plan the Infrastructure
+Run the following command to see what Terraform plans to do without actually executing any actions:
+
+```
+terraform plan
+```
+
+This command will show you a summary of the actions Terraform will take based on your configuration.
+
+### Step 7: Apply the Configuration
+If the plan looks good, you can apply the Terraform configuration to provision the infrastructure on AWS. Run the following command:
+
+```
+terraform apply
+```
+
+Terraform will prompt you to confirm the plan. Type `yes` and press Enter to proceed.
+
+### Step 8: Monitor Progress
+Terraform will start provisioning the infrastructure. You'll see output indicating the progress of each resource being created. This process may take some time depending on the complexity of your configuration.
+
+### Step 9: Verify Resources
+Once Terraform has finished applying the configuration, you can verify that the resources have been created successfully by logging in to the AWS Management Console or by using the AWS CLI.
+
+### Step 10: Destroy Resources (Optional)
+If you want to tear down the infrastructure provisioned by Terraform, you can run the following command:
+
+```
+terraform destroy
+```
+
+This will destroy all the resources defined in your Terraform configuration. Be cautious when using this command, as it will permanently delete your infrastructure.
+
+### Additional Tips:
+- Remember to save your Terraform configuration files in a version control system (e.g., Git) for tracking changes.
+- Make sure to keep sensitive information like AWS access keys and passwords secure and avoid committing them to version control.
+
+By following these steps, you'll be able to use Terraform to provision infrastructure on AWS as described in your configuration file.
