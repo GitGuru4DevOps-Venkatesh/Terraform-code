@@ -136,10 +136,105 @@ output "eks_cluster_endpoint" {
 ```
 In this modified code:
 
----
-**I've introduced variables for the SSH key pair name, AMI ID, instance type, subnet ID, and RDS database password. Users can customize these values when deploying the infrastructure.
+I've introduced variables for the SSH key pair name, AMI ID, instance type, subnet ID, and RDS database password. Users can customize these values when deploying the infrastructure.
 The resource definitions now use these variables, making the code more reusable and adaptable to different environments.
---
-**Users can provide their own values for these variables according to their specific requirements when deploying the Terraform configuration.
+
+Users can provide their own values for these variables according to their specific requirements when deploying the Terraform configuration.
 This version of the code allows for greater flexibility and reusability, as it can be easily customized for different scenarios without needing to modify the resource definitions directly.
----
+
+Here, can see clear explanation:
+
+AWS Provider Configuration: This block defines the provider for AWS and specifies the region to deploy resources in.
+```
+provider "aws" {
+  region = "us-east-1"
+}
+```
+
+Variables: These are parameters that can be customized when running Terraform. They provide flexibility and can be used to abstract away details that may change across deployments.
+```
+variable "ssh_key_name" {
+  description = "Name of the SSH key pair"
+  default     = "your_ssh_key_name"
+}
+
+variable "ami_id" {
+  description = "AMI ID for EC2 instances"
+  default     = "ami-12345678" # Enter the appropriate AMI ID
+}
+
+variable "instance_type" {
+  description = "Instance type for EC2 instances"
+  default     = "t2.micro"
+}
+
+variable "subnet_id" {
+  description = "Subnet ID for EC2 instances"
+  default     = "subnet-12345678" # Enter the appropriate subnet ID
+}
+
+variable "db_password" {
+  description = "Password for the RDS instance"
+  default     = "password"
+}
+```
+AWS EC2 Instances: These are resources representing virtual machines in the AWS cloud.
+
+```
+resource "aws_instance" "jenkins" {
+  // Configuration for Jenkins EC2 instance
+}
+
+resource "aws_instance" "sonarqube" {
+  // Configuration for SonarQube EC2 instance
+}
+
+resource "aws_instance" "prometheus" {
+  // Configuration for Prometheus EC2 instance
+}
+
+resource "aws_instance" "grafana" {
+  // Configuration for Grafana EC2 instance
+}
+```
+
+AWS RDS Instance: This is a resource representing a relational database service instance.
+```
+resource "aws_db_instance" "jira_db" {
+  // Configuration for Jira database RDS instance
+}
+```
+AWS EKS Cluster: This resource defines an Elastic Kubernetes Service cluster.
+```
+resource "aws_eks_cluster" "my_cluster" {
+  // Configuration for EKS cluster
+}
+```
+Outputs: These provide information about the deployed resources once Terraform has applied the configuration.
+```
+output "jenkins_ip" {
+  value = aws_instance.jenkins.private_ip
+}
+
+output "sonarqube_ip" {
+  value = aws_instance.sonarqube.private_ip
+}
+
+output "prometheus_ip" {
+  value = aws_instance.prometheus.private_ip
+}
+
+output "grafana_ip" {
+  value = aws_instance.grafana.private_ip
+}
+
+output "jira_db_endpoint" {
+  value = aws_db_instance.jira_db.endpoint
+}
+
+output "eks_cluster_endpoint" {
+  value = aws_eks_cluster.my_cluster.endpoint
+}
+```
+Explanation: This file describes the infrastructure to be provisioned on AWS using Terraform. It includes EC2 instances for Jenkins, SonarQube, Prometheus, and Grafana, an RDS instance for the Jira database, and an EKS cluster for Kubernetes. The output blocks are used to display important information such as IP addresses and endpoints after Terraform has applied the configuration. Ensure that the values provided for variables like ami_id, subnet_id, and role_arn are appropriate for your AWS environment. Additionally, you may want to customize other parameters like instance types, database settings, and security configurations according to your requirements.
+
