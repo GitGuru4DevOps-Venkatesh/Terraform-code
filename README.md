@@ -142,9 +142,10 @@ The resource definitions now use these variables, making the code more reusable 
 Users can provide their own values for these variables according to their specific requirements when deploying the Terraform configuration.
 This version of the code allows for greater flexibility and reusability, as it can be easily customized for different scenarios without needing to modify the resource definitions directly.
 
-Here, can see clear explanation:
+***If you didn't get understand. Here, you can see clear explanation to the above Terraform code:***
 
-AWS Provider Configuration: This block defines the provider for AWS and specifies the region to deploy resources in.
+### AWS Provider Configuration: This block defines the provider for AWS and specifies the region to deploy resources in.
+
 ```
 provider "aws" {
   region = "us-east-1"
@@ -239,10 +240,10 @@ output "eks_cluster_endpoint" {
 ## Explanation:
 
 ### This file describes the infrastructure to be provisioned on AWS using 'Terraform'. 
-### It includes EC2 instances for Jenkins, SonarQube, Prometheus, and Grafana, an RDS instance for the Jira database, and an EKS cluster for Kubernetes. 
-### The output blocks are used to display important information such as IP addresses and endpoints after Terraform has applied the configuration. 
+**It includes EC2 instances for Jenkins, SonarQube, Prometheus, and Grafana, an RDS instance for the Jira database, and an EKS cluster for Kubernetes.** 
+**The output blocks are used to display important information such as IP addresses and endpoints after Terraform has applied the configuration.**
 ### Ensure that the values provided for variables like ami_id, subnet_id, and role_arn are appropriate for your AWS environment. 
-### Additionally, you may want to customize other parameters like instance types, database settings, and security configurations according to your requirements.
+**Additionally, you may want to customize other parameters like instance types, database settings, and security configurations according to your requirements.**
 ------------------------------------------------------------------------------------------
 ## Step-by-step guide on how to use Terraform to provision the infrastructure described in the code provided:
 
