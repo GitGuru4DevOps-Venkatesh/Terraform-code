@@ -236,5 +236,11 @@ output "eks_cluster_endpoint" {
   value = aws_eks_cluster.my_cluster.endpoint
 }
 ```
-Explanation: This file describes the infrastructure to be provisioned on AWS using Terraform. It includes EC2 instances for Jenkins, SonarQube, Prometheus, and Grafana, an RDS instance for the Jira database, and an EKS cluster for Kubernetes. The output blocks are used to display important information such as IP addresses and endpoints after Terraform has applied the configuration. Ensure that the values provided for variables like ami_id, subnet_id, and role_arn are appropriate for your AWS environment. Additionally, you may want to customize other parameters like instance types, database settings, and security configurations according to your requirements.
+## Explanation:
+
+### This file describes the infrastructure to be provisioned on AWS using Terraform. 
+### It includes EC2 instances for Jenkins, SonarQube, Prometheus, and Grafana, an RDS instance for the Jira database, and an EKS cluster for Kubernetes. 
+### The output blocks are used to display important information such as IP addresses and endpoints after Terraform has applied the configuration. 
+### Ensure that the values provided for variables like ami_id, subnet_id, and role_arn are appropriate for your AWS environment. 
+### Additionally, you may want to customize other parameters like instance types, database settings, and security configurations according to your requirements.
 
