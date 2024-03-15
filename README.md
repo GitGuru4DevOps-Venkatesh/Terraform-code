@@ -306,3 +306,196 @@ This will destroy all the resources defined in your Terraform configuration. Be 
 - Make sure to keep sensitive information like AWS access keys and passwords secure and avoid committing them to version control.
 
 By following these steps, you'll be able to use Terraform to provision infrastructure on AWS as described in your configuration file.
+----------------------------------------
+### Still not understanding, Check this below is the Line-by-line explanation of the Terraform script:
+
+```hcl
+# Define AWS provider
+provider "aws" {
+  region = "us-east-1"
+}
+```
+This block defines the AWS provider configuration, specifying the AWS region to be used.
+
+```hcl
+# Variables
+variable "ssh_key_name" {
+  description = "Name of the SSH key pair"
+  default     = "your_ssh_key_name"
+}
+```
+This declares a variable named "ssh_key_name" with a default value and a description.
+
+```hcl
+variable "ami_id" {
+  description = "AMI ID for EC2 instances"
+  default     = "ami-12345678" # Enter the appropriate AMI ID
+}
+```
+Similar to the previous block, this declares a variable named "ami_id" with a default value representing the AMI ID to be used for EC2 instances.
+
+```hcl
+variable "instance_type" {
+  description = "Instance type for EC2 instances"
+  default     = "t2.micro"
+}
+```
+Declares a variable for the instance type.
+
+```hcl
+variable "subnet_id" {
+  description = "Subnet ID for EC2 instances"
+  default     = "subnet-12345678" # Enter the appropriate subnet ID
+}
+```
+Declares a variable for the subnet ID.
+
+```hcl
+variable "db_password" {
+  description = "Password for the RDS instance"
+  default     = "password"
+}
+```
+Declares a variable for the RDS database password.
+
+```hcl
+# Jenkins EC2 instance
+resource "aws_instance" "jenkins" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  subnet_id     = var.subnet_id
+  key_name      = var.ssh_key_name
+
+  tags = {
+    Name = "Jenkins"
+  }
+}
+```
+This defines an AWS EC2 instance resource named "jenkins" using the specified AMI, instance type, subnet, and SSH key. It also applies a tag to identify it as "Jenkins".
+
+```hcl
+# SonarQube EC2 instance
+resource "aws_instance" "sonarqube" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  subnet_id     = var.subnet_id
+  key_name      = var.ssh_key_name
+
+  tags = {
+    Name = "SonarQube"
+  }
+}
+```
+Similar to the previous block, this defines an EC2 instance for SonarQube.
+
+```hcl
+# Prometheus EC2 instance
+resource "aws_instance" "prometheus" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  subnet_id     = var.subnet_id
+  key_name      = var.ssh_key_name
+
+  tags = {
+    Name = "Prometheus"
+  }
+}
+```
+Defines an EC2 instance for Prometheus.
+
+```hcl
+# Grafana EC2 instance
+resource "aws_instance" "grafana" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  subnet_id     = var.subnet_id
+  key_name      = var.ssh_key_name
+
+  tags = {
+    Name = "Grafana"
+  }
+}
+```
+Defines an EC2 instance for Grafana.
+
+```hcl
+# RDS instance for Jira database
+resource "aws_db_instance" "jira_db" {
+  allocated_storage    = 20
+  engine              = "mysql"
+  engine_version      = "5.7"
+  instance_class      = "db.t2.micro"
+  name                = "jira-db"
+  username            = "admin"
+  password            = var.db_password
+  publicly_accessible = false
+}
+```
+Defines an RDS instance for the Jira database.
+
+```hcl
+# EKS cluster
+resource "aws_eks_cluster" "my_cluster" {
+  name     = "my-cluster"
+  role_arn = "arn:aws:iam::123456789012:role/eks-service-role-AWSServiceRoleForAmazonEKS-EXAMPLE"
+  version  = "1.20"
+}
+```
+Defines an Amazon EKS cluster named "my-cluster".
+
+```hcl
+# Outputs
+output "jenkins_ip" {
+  value = aws_instance.jenkins.private_ip
+}
+```
+Defines an output for the private IP address of the Jenkins instance.
+
+```hcl
+output "sonarqube_ip" {
+  value = aws_instance.sonarqube.private_ip
+}
+```
+Defines an output for the private IP address of the SonarQube instance.
+
+```hcl
+output "prometheus_ip" {
+  value = aws_instance.prometheus.private_ip
+}
+```
+Defines an output for the private IP address of the Prometheus instance.
+
+```hcl
+output "grafana_ip" {
+  value = aws_instance.grafana.private_ip
+}
+```
+Defines an output for the private IP address of the Grafana instance.
+
+```hcl
+output "jira_db_endpoint" {
+  value = aws_db_instance.jira_db.endpoint
+}
+```
+Defines an output for the endpoint of the Jira database.
+
+```hcl
+output "eks_cluster_endpoint" {
+  value = aws_eks_cluster.my_cluster.endpoint
+}
+```
+Defines an output for the endpoint of the EKS cluster.
+
+```hcl
+output "jira_db_endpoint" {
+  value = aws_db_instance.jira_db.endpoint
+}
+```
+Defines an output for the endpoint of the Jira database (duplicated).
+
+```hcl
+output "eks_cluster_endpoint" {
+  value = aws_eks_cluster.my_cluster.endpoint
+}
+```
+Defines an output for the endpoint of the EKS cluster (duplicated).
